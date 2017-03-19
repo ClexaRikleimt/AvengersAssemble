@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bandrona helper slack integration</title>
+    </head>
+
+    <body>
+        <h1>Bandrona helper slack integration</h1>
+
+        <h2>Setup instructions</h2>
+        <p>This integration works based on user presence. It will look for the text 'avengers assemble' in channels (both regular and private) where someone who installed this integration to slack is present as well. Other channels are not checked. To install it, click the button below.</p>
+        <a href="{{ install_url }}"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+
+        <h2>What it does</h2>
+        <p>If anyone says Avengers Assemble, or avengers assemble, or Avengers assemble, or even something weird like AvenGERS aSsEmBle (as long as the letters are the same, the case won't matter), it will call the council together in that channel. The council members are configured on the <a href="{{ url_for('bandrona_settings') }}">settings page</a>. If any changes are made to the council, add/remove members here. If the previous message is detected in a slack message, the council is first invited into that channel, then the well known AVENGERS ASSEMBLE message is send out with highlights to the individual council members.</p>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bandrona council</title>
+    </head>
+
+    <body>
+        <h1>Select council members</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="flashes">
+                    {% for message in messages %}
+                        <div class="alert" style="background-color: black; color: white">{{ message }}</div>
+                    {% endfor %}
+                    <br />
+                    <br />
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            {% for member in members %}
+                {% if not member['deleted'] %}
+                    <img src="{% if '&d=' in member['profile']['image_32'] %}{{ member['profile']['image_32']|split_slack_icon_url|urldecode|safe }}{% else %}{{ member['profile']['image_32']|safe }}{% endif %}">&nbsp;&nbsp;&nbsp;<label for="{{ member['id'] }}">{{ member['profile']['real_name'] }} (@{{ member['name'] }})</label><input type="checkbox" name="{{ member['id'] }}" id="{{ member['id'] }}" {% if member['id'] in avengers %}checked{% endif %} /><br />
+                {% endif %}
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </body>
+</html>
