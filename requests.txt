@@ -1,0 +1,7 @@
+flask
+flask-sqlalchemy
+sqlalchemy
+werkzeug
+celery
+celery[redis]
+requests
